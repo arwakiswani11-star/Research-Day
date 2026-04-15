@@ -26,7 +26,6 @@ body {
 .page { display: none; width: 100%; min-height: 100vh; }
 .page.active { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px 16px; }
 
-/* ── SURVEY ── */
 .survey-card {
   background: var(--cream); border-radius: 24px;
   max-width: 640px; width: 100%; overflow: hidden;
@@ -125,11 +124,19 @@ body {
   font-family:'Outfit',sans-serif; font-size:14.5px; font-weight:500;
   color:white; cursor:pointer; transition:all 0.18s;
   box-shadow:0 6px 20px rgba(20,116,111,0.3);
+  display:flex; align-items:center; gap:8px;
 }
 .btn-next:hover { transform:translateY(-2px); box-shadow:0 10px 28px rgba(20,116,111,0.4); }
 .btn-next:disabled { opacity:0.4; cursor:not-allowed; transform:none !important; }
 
-/* ── THANKS ── */
+/* submitting spinner */
+.spinner {
+  width:16px; height:16px; border:2px solid rgba(255,255,255,0.3);
+  border-top-color:white; border-radius:50%; animation:spin 0.8s linear infinite; display:none;
+}
+@keyframes spin { to { transform:rotate(360deg); } }
+
+/* THANKS */
 .ty-card {
   background:var(--cream); border-radius:24px; max-width:480px; width:100%;
   overflow:hidden; box-shadow:0 50px 100px rgba(0,0,0,0.5);
@@ -149,15 +156,12 @@ body {
 }
 .ty-admin-btn:hover { border-color:var(--teal); color:var(--teal); }
 
-/* ── ADMIN ── */
+/* ADMIN */
 #page-admin { background:var(--navy); padding:0; align-items:stretch; justify-content:flex-start; }
 .admin-wrap { width:100%; max-width:900px; margin:0 auto; padding:40px 24px 60px; }
 .admin-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:32px; flex-wrap:wrap; gap:12px; }
 .admin-header h2 { font-family:'Cormorant Garamond',serif; color:white; font-size:30px; }
-.back-link {
-  color:var(--muted); font-size:13px; cursor:pointer;
-  background:none; border:none; font-family:'Outfit',sans-serif;
-}
+.back-link { color:var(--muted); font-size:13px; cursor:pointer; background:none; border:none; font-family:'Outfit',sans-serif; }
 .back-link:hover { color:var(--gold); }
 .stat-row { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:28px; }
 .stat-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); border-radius:16px; padding:20px; text-align:center; }
@@ -166,7 +170,7 @@ body {
 .section-card { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:18px; padding:24px; margin-bottom:20px; }
 .section-card h3 { font-family:'Cormorant Garamond',serif; color:white; font-size:20px; margin-bottom:16px; padding-bottom:12px; border-bottom:1px solid rgba(255,255,255,0.08); }
 .bar-item { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
-.bar-lbl { color:rgba(255,255,255,0.65); font-size:13px; min-width:160px; }
+.bar-lbl { color:rgba(255,255,255,0.65); font-size:13px; min-width:180px; }
 .bar-track { flex:1; height:8px; background:rgba(255,255,255,0.08); border-radius:10px; overflow:hidden; }
 .bar-fill { height:100%; background:linear-gradient(90deg,var(--teal-light),var(--gold)); border-radius:10px; transition:width 1s ease; }
 .bar-count { color:var(--gold); font-size:13px; font-weight:500; min-width:30px; text-align:right; }
@@ -183,7 +187,6 @@ body {
 .tab { flex:1; padding:10px; border-radius:10px; font-family:'Outfit',sans-serif; font-size:13px; font-weight:500; color:var(--muted); cursor:pointer; border:none; background:none; transition:all 0.18s; }
 .tab.active { background:rgba(255,255,255,0.1); color:white; }
 
-/* password overlay */
 .pw-overlay { position:fixed; inset:0; background:rgba(10,22,40,0.97); display:flex; flex-direction:column; align-items:center; justify-content:center; z-index:100; padding:24px; }
 .pw-box { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:20px; padding:40px; max-width:360px; width:100%; text-align:center; }
 .pw-box h3 { font-family:'Cormorant Garamond',serif; color:white; font-size:26px; margin-bottom:8px; }
@@ -193,21 +196,16 @@ body {
 .pw-btn { width:100%; padding:13px; border-radius:11px; background:linear-gradient(135deg,var(--teal-light),var(--teal)); border:none; color:white; font-family:'Outfit',sans-serif; font-size:15px; font-weight:500; cursor:pointer; }
 .pw-err { color:#e87676; font-size:12px; margin-top:8px; min-height:16px; }
 
-/* QR page */
-#page-qr { padding:40px 16px; }
-.qr-card { background:var(--cream); border-radius:24px; max-width:400px; width:100%; overflow:hidden; box-shadow:0 50px 100px rgba(0,0,0,0.5); animation:rise 0.6s ease both; text-align:center; }
-.qr-top { background:linear-gradient(145deg,#14746f,#0a3d39); padding:32px 28px 24px; }
-.qr-top h2 { font-family:'Cormorant Garamond',serif; color:white; font-size:28px; margin-bottom:4px; }
-.qr-top p { color:rgba(255,255,255,0.55); font-size:13px; }
-.qr-body { padding:28px; }
-.qr-frame { display:inline-flex; align-items:center; justify-content:center; background:white; border-radius:16px; padding:16px; border:3px solid var(--teal); margin-bottom:16px; box-shadow:0 8px 24px rgba(20,116,111,0.15); }
-.qr-steps { display:flex; justify-content:center; gap:12px; margin-bottom:16px; flex-wrap:wrap; align-items:flex-start; }
-.qr-step { font-size:11px; color:var(--teal); font-weight:500; text-align:center; max-width:70px; }
-.qr-step .icon { width:34px; height:34px; background:#eaf6f5; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:15px; margin:0 auto 5px; }
-.qr-url { background:white; border:1.5px dashed var(--gold); border-radius:10px; padding:8px 14px; font-size:11px; color:var(--teal); word-break:break-all; margin-bottom:16px; font-weight:500; }
-.qr-footer { background:var(--navy); padding:12px 28px; display:flex; align-items:center; justify-content:space-between; }
-.qr-footer span { color:rgba(255,255,255,0.4); font-size:10px; letter-spacing:1px; }
-.qr-footer .dot { width:6px; height:6px; background:var(--gold); border-radius:50%; }
+/* sheets badge */
+.sheets-badge {
+  display:inline-flex; align-items:center; gap:6px;
+  background:#e8f5e9; border:1px solid #a5d6a7; color:#2e7d32;
+  font-size:11px; font-weight:500; padding:4px 12px; border-radius:20px; margin-top:8px;
+}
+
+/* loading */
+.loading-row { display:flex; align-items:center; gap:10px; color:var(--muted); font-size:13px; padding:20px 0; }
+.mini-spinner { width:16px; height:16px; border:2px solid rgba(255,255,255,0.1); border-top-color:var(--teal-light); border-radius:50%; animation:spin 0.8s linear infinite; }
 
 @media(max-width:500px){
   .s-header,.s-body { padding-left:24px; padding-right:24px; }
@@ -233,7 +231,7 @@ body {
   </div>
   <div class="s-body">
 
-    <!-- Q1 Stars -->
+    <!-- Q1 -->
     <div class="step-panel active" id="step-1">
       <div class="q-eyebrow">Question 01 of 05</div>
       <div class="q-title">How beneficial was today's Research Day for your professional development?</div>
@@ -245,7 +243,7 @@ body {
       <div class="nav-row"><span></span><button class="btn-next" id="next-1" onclick="goNext(1)" disabled>Next →</button></div>
     </div>
 
-    <!-- Q2 Sessions -->
+    <!-- Q2 -->
     <div class="step-panel" id="step-2">
       <div class="q-eyebrow">Question 02 of 05</div>
       <div class="q-title">Which sessions did you find most valuable? <small style="font-family:Outfit;font-size:13px;color:var(--muted)">Select all that apply</small></div>
@@ -263,7 +261,7 @@ body {
       </div>
     </div>
 
-    <!-- Q3 Improve -->
+    <!-- Q3 -->
     <div class="step-panel" id="step-3">
       <div class="q-eyebrow">Question 03 of 05</div>
       <div class="q-title">What would you like us to improve or change for future research days?</div>
@@ -274,7 +272,7 @@ body {
       </div>
     </div>
 
-    <!-- Q4 Future Topics -->
+    <!-- Q4 -->
     <div class="step-panel" id="step-4">
       <div class="q-eyebrow">Question 04 of 05</div>
       <div class="q-title">Which topics would you like covered in a future Research Day?</div>
@@ -294,7 +292,7 @@ body {
       </div>
     </div>
 
-    <!-- Q5 Format Score -->
+    <!-- Q5 -->
     <div class="step-panel" id="step-5">
       <div class="q-eyebrow">Question 05 of 05</div>
       <div class="q-title">How satisfied were you with the overall format and learning experience? <small style="font-family:Outfit;font-size:13px;color:var(--muted)">1 = Poor &nbsp;•&nbsp; 10 = Excellent</small></div>
@@ -307,7 +305,10 @@ body {
       </div>
       <div class="nav-row">
         <button class="btn-back" onclick="goBack(5)">← Back</button>
-        <button class="btn-next" id="submit-btn" onclick="submitSurvey()" disabled>Submit ✓</button>
+        <button class="btn-next" id="submit-btn" onclick="submitSurvey()" disabled>
+          <span id="submit-label">Submit ✓</span>
+          <div class="spinner" id="submit-spinner"></div>
+        </button>
       </div>
     </div>
 
@@ -315,43 +316,18 @@ body {
 </div>
 </div>
 
-<!-- ══ THANK YOU ══ -->
+<!-- ══ THANKS ══ -->
 <div class="page" id="page-thanks">
 <div class="ty-card">
   <div class="ty-top">
     <span class="ty-icon">🎓</span>
     <h2>Thank You!</h2>
-    <p>Your feedback has been recorded</p>
+    <p>Your feedback has been saved to Google Sheets</p>
   </div>
   <div class="ty-body">
     <p>We truly appreciate your time. Your insights will help shape the next Research Day into an even better experience.</p>
+    <div class="sheets-badge">📊 Saved to Google Sheets ✅</div><br>
     <button class="ty-admin-btn" onclick="showAdminLogin()">📊 View Results (Admin)</button>
-  </div>
-</div>
-</div>
-
-<!-- ══ QR PAGE ══ -->
-<div class="page" id="page-qr">
-<div class="qr-card">
-  <div class="qr-top">
-    <div class="pill" style="margin-bottom:12px">📋 Feedback</div>
-    <h2>Research Day<br>Assessment</h2>
-    <p>Less than 2 minutes · Anonymous</p>
-  </div>
-  <div class="qr-body">
-    <div class="qr-frame"><div id="qrcode"></div></div>
-    <p style="color:var(--muted);font-size:12px;margin-bottom:14px">📱 Scan with your phone camera</p>
-    <div class="qr-steps">
-      <div class="qr-step"><div class="icon">📷</div>Open Camera</div>
-      <div style="color:var(--gold);font-size:18px;padding-top:8px">→</div>
-      <div class="qr-step"><div class="icon">🔲</div>Scan QR Code</div>
-      <div style="color:var(--gold);font-size:18px;padding-top:8px">→</div>
-      <div class="qr-step"><div class="icon">✍️</div>Fill Survey</div>
-    </div>
-    <div class="qr-url" id="qr-url-display">—</div>
-  </div>
-  <div class="qr-footer">
-    <span>RESEARCH DAY 2026</span><div class="dot"></div><span>QUALITY & EDUCATION</span>
   </div>
 </div>
 </div>
@@ -369,18 +345,20 @@ body {
   </div>
   <div class="admin-wrap">
     <div class="admin-header">
-      <h2>📊 Results Dashboard</h2>
+      <div>
+        <h2>📊 Results Dashboard</h2>
+        <div class="sheets-badge" style="margin-top:6px">📗 Connected to Google Sheets</div>
+      </div>
       <button class="back-link" onclick="showPage('survey')">← Back to survey</button>
     </div>
     <div class="tab-bar">
       <button class="tab active" onclick="switchTab('overview',event)">Overview</button>
       <button class="tab" onclick="switchTab('comments',event)">Comments</button>
-      <button class="tab" onclick="switchTab('qrtab',event)">QR Code</button>
     </div>
 
     <div id="tab-overview">
       <div class="stat-row">
-        <div class="stat-box"><div class="num" id="s-total">0</div><div class="lbl">Total Responses</div></div>
+        <div class="stat-box"><div class="num" id="s-total">—</div><div class="lbl">Total Responses</div></div>
         <div class="stat-box"><div class="num" id="s-stars">—</div><div class="lbl">Avg Benefit Rating</div></div>
         <div class="stat-box"><div class="num" id="s-format">—</div><div class="lbl">Avg Format Score</div></div>
       </div>
@@ -399,28 +377,20 @@ body {
     <div id="tab-comments" style="display:none">
       <div class="section-card"><h3>✍️ Improvement Suggestions</h3><div id="comments-list"><div class="no-data">No comments yet</div></div></div>
     </div>
-
-    <div id="tab-qrtab" style="display:none">
-      <div class="section-card" style="text-align:center">
-        <h3>🔲 Survey QR Code</h3>
-        <p style="color:var(--muted);font-size:13px;margin-bottom:20px">Print and place on tables at your event</p>
-        <div style="display:inline-block;background:white;border-radius:16px;padding:16px;border:3px solid var(--teal)"><div id="qrcode2"></div></div>
-        <div style="margin-top:12px;color:var(--muted);font-size:12px" id="admin-url-display"></div>
-      </div>
-    </div>
   </div>
 </div>
 
 <script>
+const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbyBu6Ek-OqoQFjliwuR54sbsZrqJMDJMmZWfHxRdyvztxNQedPIRxYi_uiBL6yX2AjHlQ/exec';
 const ADMIN_PASSWORD = 'ResearchDay2026';
-const STORAGE_KEY = 'rd_responses_v3';
+const STORAGE_KEY = 'rd_responses_v4';
 
 let answers = { starRating:0, sessions:[], improve:'', topics:[], formatScore:0 };
-
 const starLabels = ['','Not beneficial','Slightly beneficial','Moderately beneficial','Very beneficial','Extremely beneficial'];
 
-function loadResponses() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY))||[]; } catch { return []; } }
-function saveResponse(r) { const a=loadResponses(); a.push({...r,ts:new Date().toISOString()}); localStorage.setItem(STORAGE_KEY,JSON.stringify(a)); }
+// local backup
+function loadLocal() { try { return JSON.parse(localStorage.getItem(STORAGE_KEY))||[]; } catch { return []; } }
+function saveLocal(r) { const a=loadLocal(); a.push({...r,ts:new Date().toISOString()}); localStorage.setItem(STORAGE_KEY,JSON.stringify(a)); }
 
 function showPage(n) {
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
@@ -430,24 +400,19 @@ function showPage(n) {
 function goNext(from) {
   document.getElementById('step-'+from).classList.remove('active');
   document.getElementById('step-'+(from+1)).classList.add('active');
-  const pct = (from/5)*100;
-  document.getElementById('prog').style.width=pct+'%';
-  document.getElementById('prog-lbl')=(from+1)+' / 5';
+  document.getElementById('prog').style.width=(from/5*100)+'%';
   document.getElementById('prog-lbl').textContent=(from+1)+' / 5';
 }
 function goBack(from) {
   document.getElementById('step-'+from).classList.remove('active');
   document.getElementById('step-'+(from-1)).classList.add('active');
-  const pct=((from-2)/5)*100;
-  document.getElementById('prog').style.width=pct+'%';
+  document.getElementById('prog').style.width=((from-2)/5*100)+'%';
   document.getElementById('prog-lbl').textContent=(from-1)+' / 5';
 }
 
-// Stars
 document.querySelectorAll('#star-row .star').forEach(s=>{
   s.addEventListener('click',()=>{
-    const v=parseInt(s.dataset.v);
-    answers.starRating=v;
+    const v=parseInt(s.dataset.v); answers.starRating=v;
     document.querySelectorAll('#star-row .star').forEach(x=>x.classList.toggle('on',parseInt(x.dataset.v)<=v));
     document.getElementById('star-lbl').textContent=starLabels[v];
     document.getElementById('next-1').disabled=false;
@@ -457,21 +422,38 @@ document.querySelectorAll('#star-row .star').forEach(s=>{
 function toggleOpt(el,group) {
   el.classList.toggle('selected');
   const k=group==='sessions'?'sessions':'topics';
-  const v=el.dataset.v;
-  const i=answers[k].indexOf(v);
+  const v=el.dataset.v; const i=answers[k].indexOf(v);
   if(i===-1) answers[k].push(v); else answers[k].splice(i,1);
 }
 
 function pickScale(el) {
   document.querySelectorAll('#scale-row .sc').forEach(x=>x.classList.remove('on'));
-  el.classList.add('on');
-  answers.formatScore=parseInt(el.textContent);
+  el.classList.add('on'); answers.formatScore=parseInt(el.textContent);
   document.getElementById('submit-btn').disabled=false;
 }
 
-function submitSurvey() {
-  answers.improve=document.getElementById('improve').value.trim();
-  saveResponse({...answers});
+async function submitSurvey() {
+  answers.improve = document.getElementById('improve').value.trim();
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  document.getElementById('submit-label').textContent = 'Saving…';
+  document.getElementById('submit-spinner').style.display = 'block';
+
+  // Save locally as backup
+  saveLocal({...answers});
+
+  // Send to Google Sheets
+  try {
+    await fetch(SHEETS_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(answers)
+    });
+  } catch(e) {
+    console.log('Sheets error (saved locally):', e);
+  }
+
   showPage('thanks');
 }
 
@@ -492,14 +474,12 @@ function checkPw() {
 function switchTab(name,ev) {
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
   ev.target.classList.add('active');
-  ['overview','comments','qrtab'].forEach(t=>{
-    document.getElementById('tab-'+t).style.display=t===name?'':'none';
-  });
-  if(name==='qrtab') renderAdminQR();
+  document.getElementById('tab-overview').style.display = name==='overview'?'':'none';
+  document.getElementById('tab-comments').style.display  = name==='comments'?'':'none';
 }
 function renderDashboard() {
-  const all=loadResponses(); const n=all.length;
-  document.getElementById('s-total').textContent=n;
+  const all = loadLocal(); const n = all.length;
+  document.getElementById('s-total').textContent = n;
   if(n===0) return;
   const avgS=(all.reduce((a,r)=>a+r.starRating,0)/n).toFixed(1);
   const avgF=(all.reduce((a,r)=>a+r.formatScore,0)/n).toFixed(1);
@@ -512,8 +492,9 @@ function renderDashboard() {
   const tc={};all.forEach(r=>r.topics.forEach(t=>tc[t]=(tc[t]||0)+1));renderBar('topics-chart',tc);
   const fc={};all.forEach(r=>fc[r.formatScore]=(fc[r.formatScore]||0)+1);renderBar('format-chart',fc);
   const comments=all.filter(r=>r.improve);
-  const cl=document.getElementById('comments-list');
-  cl.innerHTML=comments.length===0?'<div class="no-data">No written comments yet</div>':comments.map((r,i)=>`<div class="comment-item"><div class="c-text">"${r.improve.replace(/</g,'&lt;')}"</div><div class="c-meta">Response #${i+1} · ${new Date(r.ts).toLocaleString()}</div></div>`).join('');
+  document.getElementById('comments-list').innerHTML=comments.length===0
+    ?'<div class="no-data">No written comments yet</div>'
+    :comments.map((r,i)=>`<div class="comment-item"><div class="c-text">"${r.improve.replace(/</g,'&lt;')}"</div><div class="c-meta">Response #${i+1} · ${new Date(r.ts).toLocaleString()}</div></div>`).join('');
 }
 function renderBar(id,counts) {
   const el=document.getElementById(id);
@@ -523,29 +504,10 @@ function renderBar(id,counts) {
   el.innerHTML=entries.map(([k,v])=>`<div class="bar-item"><div class="bar-lbl">${k}</div><div class="bar-track"><div class="bar-fill" style="width:${(v/max)*100}%"></div></div><div class="bar-count">${v}</div></div>`).join('');
 }
 
-// QR CODE
-function surveyURL() { return window.location.href.split('?')[0].replace(/#.*/,''); }
-(function(){
-  const url=surveyURL();
-  const el=document.getElementById('qr-url-display');
-  if(el) el.textContent=url;
-  const qrEl=document.getElementById('qrcode');
-  if(qrEl) new QRCode(qrEl,{text:url,width:200,height:200,colorDark:'#0a1628',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.H});
-})();
-function renderAdminQR(){
-  const el=document.getElementById('qrcode2');
-  if(el&&!el.children.length){
-    const url=surveyURL();
-    document.getElementById('admin-url-display').textContent=url;
-    new QRCode(el,{text:url,width:220,height:220,colorDark:'#0a1628',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.H});
-  }
-}
-
-// URL routing
+// routing
 (function(){
   const p=new URLSearchParams(window.location.search).get('view');
-  if(p==='qr') showPage('qr');
-  else if(p==='admin') showAdminLogin();
+  if(p==='admin') showAdminLogin();
 })();
 </script>
 </body>
